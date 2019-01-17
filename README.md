@@ -1,6 +1,6 @@
 # Extract GO and KOG-class annotations from eggNOG-eMapper output
 
-[eggNoG's emapper](http://eggnogdb.embl.de/#/app/emapper) is the method of choice to annotate transcriptomes of non-model organisms.
+[eggNOG's emapper](http://eggnogdb.embl.de/#/app/emapper) is the method of choice to annotate transcriptomes of non-model organisms.
 
 This tiny repository provides one-liners to extact the specific annotation data (gene names, Gene Ontology [GO], and euKaryotic Orthologous Groups [KOG] ) out of eMapper output table.
 
