@@ -2,7 +2,7 @@
 
 [eggNOG-mapper](http://eggnogdb.embl.de/#/app/emapper) is the method of choice to annotate transcriptomes of non-model organisms.
 
-This tiny repository provides one-liners to extact the specific annotation data (gene names, Gene Ontology [GO], and euKaryotic Orthologous Groups [KOG] ) out of eggNOG-mapper output table.
+This tiny repository provides one-liners for extacting specific annotation data (gene names, Gene Ontology [GO], and euKaryotic Orthologous Groups [KOG] ) out of eggNOG-mapper output table.
 
 The goal is to generate annotations compatible with rank-based functional summary methods, [KOGMWU](https://cran.r-project.org/web/packages/KOGMWU/index.html) and [GO_MWU](https://github.com/z0on/GO_MWU).
 
