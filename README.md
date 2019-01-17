@@ -15,13 +15,13 @@ Files included:
 
 Extracting Gene Ontology annotations for [GO_MWU](https://github.com/z0on/GO_MWU):
 
-```javascript
+```bash
 awk -F "\t" 'BEGIN {OFS="\t" }{print $1,$6 }' Mcavernosa_euk.emapper.annotations | grep GO | perl -pe 's/,/;/g' >Mcavernosa_gene2go.tab
 ```
 
 Extracting KOG annotations for [KOGMWU](https://cran.r-project.org/web/packages/KOGMWU/index.html):
 
-```javascript
+```bash
 #  KOG classes (single-letter):
 awk -F "\t" 'BEGIN {OFS="\t" }{print $1,$12 }' Mcavernosa_euk.emapper.annotations | grep -Ev "[,#S]" >mc_gene2kogClass1.tab
 # converting single-letter KOG classes to text understood by KOGMWU package (must have kog_classes.txt file in the same dir):
@@ -29,7 +29,7 @@ awk 'BEGIN {FS=OFS="\t"} NR==FNR {a[$1] = $2;next} {print $1,a[$2]}' kog_classes
 ```
 Extracting gene names:
 
-```javascript
+```bash
 awk -F "\t" 'BEGIN {OFS="\t" }{print $1,$13 }' Mcavernosa_euk.emapper.annotations | grep -Ev "\tNA" >Mcavernosa_gene2geneName.tab
 ```
 
