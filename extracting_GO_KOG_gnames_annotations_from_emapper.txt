@@ -1,0 +1,20 @@
+#####################################
+#  EXTRACTING ANNOTATION TABLES 
+#  compatible with:
+#  - GO_MWU (https://github.com/z0on/GO_MWU)
+#  - KOGMWU (https://cran.r-project.org/web/packages/KOGMWU/index.html) 
+#  FROM EGGNOG-EMAPPER OUTPUT 
+#####################################
+
+# Assuming we have output from eggNOG's emapper (http://eggnogdb.embl.de/#/app/emapper)
+# named mycreature_euk.emapper.annotations 
+
+# GO:
+awk -F "\t" 'BEGIN {OFS="\t" }{print $1,$6 }' mycreature_euk.emapper.annotations | grep GO | perl -pe 's/,/;/g' >mycreature_gene2go.tab
+# gene names:
+awk -F "\t" 'BEGIN {OFS="\t" }{print $1,$13 }' mycreature_euk.emapper.annotations | grep -Ev "\tNA" >mycreature_gene2geneName.tab
+
+#  KOG classes (single-letter):
+awk -F "\t" 'BEGIN {OFS="\t" }{print $1,$12 }' mycreature_euk.emapper.annotations | grep -Ev "[,#S]" >mc_gene2kogClass1.tab
+# converting single-letter KOG classes to text understood by KOGMWU package (must have KOG_classes.txt file in the same dir):
+awk 'BEGIN {FS=OFS="\t"} NR==FNR {a[$1] = $2;next} {print $1,a[$2]}' kog_classes.txt mc_gene2kogClass1.tab > mycreature_gene2kogClass.tab
